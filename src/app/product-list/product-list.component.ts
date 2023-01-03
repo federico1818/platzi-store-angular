@@ -28,4 +28,8 @@ export class ProductListComponent {
             image: 'https://picsum.photos/300'
         },
     ]
+
+    public addProductToShoppingCart(product: Product): void {
+        console.log(product)
+    }
 }
