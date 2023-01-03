@@ -1,0 +1,26 @@
+img {
+    border-radius: 4px;
+    max-width: 100%;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    color: hsl(240deg, 2%, 70%);
+    cursor: pointer;
+
+    & .material-symbols-outlined {
+        font-size: 32px;
+        font-weight: bold;
+    }
+}
+
+.product-name {
+    color: #bfbebc;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.product-price {
+    font-weight: 700;
+}

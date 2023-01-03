@@ -1,0 +1,16 @@
+nav {
+    padding: 8px 24px;
+}
+
+ul {
+    color: hsl(240, 2%, 70%);
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+    font-weight: 700;
+    overflow-x: scroll;
+}
+
+li {
+    padding: 8px;
+}
