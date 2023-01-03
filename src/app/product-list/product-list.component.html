@@ -3,7 +3,7 @@
         {{ shoppingCart.length }} products
     </div>
     <div class="shopping-cart-total">
-        $ {{ shoppingCartTotal }}
+        {{ shoppingCartTotal | currency: '$'  }}
     </div>
 </div>
 <div class="product-list">
