@@ -8,6 +8,8 @@ import { Product } from 'src/app/product'
 })
 
 export class ProductListComponent {
+    public shoppingCart: Product[] = []
+    public shoppingCartTotal: number = 0
     public products: Product[] = [
         {
             id: 1,
@@ -30,6 +32,9 @@ export class ProductListComponent {
     ]
 
     public addProductToShoppingCart(product: Product): void {
-        console.log(product)
+        this.shoppingCart.push(product)
+        this.shoppingCartTotal = this.shoppingCart.reduce((sum: number, product: Product) => {
+            return product.price + sum
+        }, 0)
     }
 }

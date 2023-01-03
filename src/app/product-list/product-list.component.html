@@ -1,3 +1,11 @@
+<div class="shopping-cart-info">
+    <div class="shopping-cart-length">
+        {{ shoppingCart.length }} products
+    </div>
+    <div class="shopping-cart-total">
+        $ {{ shoppingCartTotal }}
+    </div>
+</div>
 <div class="product-list">
     <app-product *ngFor="let product of products" [product]="product" (addedProduct)="addProductToShoppingCart($event)"></app-product>
 </div>
