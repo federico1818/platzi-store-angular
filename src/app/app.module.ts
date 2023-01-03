@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { ImgComponent } from './img/img.component';
 import { ProductComponent } from './product/product.component';
 import { CategoriesComponent } from './categories/categories.component';
-import { ProductListComponent } from './product-list/product-list.component'
+import { ProductListComponent } from './product-list/product-list.component';
+import { ReversePipe } from './pipes/reverse.pipe'
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { ProductListComponent } from './product-list/product-list.component'
         ImgComponent,
         ProductComponent,
         CategoriesComponent,
-        ProductListComponent
+        ProductListComponent,
+        ReversePipe
     ],
     imports: [
         BrowserModule,
