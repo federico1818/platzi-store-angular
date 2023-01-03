@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Product } from 'src/app/product'
 
 import { StoreService } from 'src/app/services/store.service'
+import { ProductService } from '../services/product.service'
 
 @Component({
     selector: 'app-product-list',
@@ -12,36 +13,20 @@ import { StoreService } from 'src/app/services/store.service'
 export class ProductListComponent implements OnInit {
     public shoppingCart: Product[] = []
     public shoppingCartTotal: number = 0
+    public products: Product[] = []
 
     constructor(
-        private storeService: StoreService
+        private storeService: StoreService,
+        private productService: ProductService
     ) {}
 
     public ngOnInit(): void {
         this.shoppingCart = this.storeService.shoppingCart
         this.shoppingCartTotal = this.storeService.total
+        this.productService.all().subscribe((products: Product[]) => {
+            this.products = products
+        })
     }
-
-    public products: Product[] = [
-        {
-            id: 1,
-            name: 'Auto',
-            price: 199.99,
-            image: 'https://picsum.photos/300'
-        },
-        {
-            id: 2,
-            name: 'Muñeca',
-            price: 19.99,
-            image: 'https://picsum.photos/300'
-        },
-        {
-            id: 3,
-            name: 'Pelota',
-            price: 59.99,
-            image: 'https://picsum.photos/300'
-        },
-    ]
 
     public addProductToShoppingCart(product: Product): void {
         this.storeService.addProductToShoppingCart(product)
