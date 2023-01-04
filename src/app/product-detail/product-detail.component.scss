@@ -1,0 +1,12 @@
+img {
+    justify-self: center;
+    border-radius: 4px;
+}
+
+.product-detail-header {
+    padding: 16px;
+
+    & .material-symbols-outlined {
+        font-weight: bold;
+    }
+}

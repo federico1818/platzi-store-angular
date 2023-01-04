@@ -11,7 +11,8 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
-import { HeaderComponent } from './header/header.component'
+import { HeaderComponent } from './header/header.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component'
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { HeaderComponent } from './header/header.component'
         ProductListComponent,
         ReversePipe,
         HighlightDirective,
-        HeaderComponent
+        HeaderComponent,
+        ProductDetailComponent
     ],
     imports: [
         BrowserModule,
