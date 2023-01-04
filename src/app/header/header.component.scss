@@ -1,0 +1,29 @@
+header {
+    padding: 24px 24px 0;
+    display: flex;
+    justify-content: flex-end;
+
+    & .material-symbols-outlined {
+        font-size: 32px;
+    }
+}
+
+.shopping-cart {
+    position: relative;
+}
+
+.shopping-cart-length {
+    width: 16px;
+    height: 16px;
+    background-color: black;
+    position: absolute;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -8px;
+    right: -4px;
+    border-radius: 50%;
+}

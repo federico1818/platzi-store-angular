@@ -1,4 +1,4 @@
 <img [src]="product.image" alt="product.title">
 <div class="product-title" [title]="product.title | reverse">{{ product.title }}</div>
 <div class="product-price">{{ product.price | currency: '$' }}</div>
-<button (click)="addProductToShoppingCart()"><span class="material-symbols-outlined">shopping_cart</span></button>
+<button (click)="addProductToShoppingCart()"><span class="material-symbols-outlined">add_shopping_cart</span></button>
