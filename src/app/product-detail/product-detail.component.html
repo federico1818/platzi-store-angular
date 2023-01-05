@@ -1,6 +1,22 @@
-<div class="product-detail-header">
-    <button (click)="close()">
-        <span class="material-symbols-outlined">arrow_back</span>
-    </button>
+<div class="overflow" [class.active]="active">
+    <div class="product-detail-content">
+        <div class="product-detail-header">
+            <button (click)="close()">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+        </div>
+        <div class="product-detail-body">
+            <img src="https://picsum.photos/200" alt="image">
+            <div class="product-title">Un producto</div>
+            <div class="product-price">$200.00</div>
+            <div class="product-description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Aut quas similique minus.
+                Labore inventore at obcaecati nihil illum eaque atque,
+                quam amet asperiores earum unde,
+                corporis similique quos temporibus deleniti?
+            </div>
+            <button class="button-primary">Comprar</button>
+        </div>
+    </div>
 </div>
-<img src="https://picsum.photos/200" alt="image">

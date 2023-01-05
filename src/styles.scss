@@ -1,3 +1,8 @@
+:root {
+    --text-color-secondary: hsl(240deg, 2%, 70%);
+    --button-bg-primary: hsl(240deg, 2%, 70%);
+}
+
 body {
     background-color: hsl(0, 0%, 94%);
     font-family: 'Quicksand', sans-serif;
@@ -13,11 +18,19 @@ ul {
 button {
     cursor: pointer;
     border: 0;
-    background-color: transparent;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.button-primary {
+    background-color: var(--button-bg-primary);
+    color: #FFF;
+    width: 128px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 4px;
 }
 
 app-product {
@@ -36,24 +49,5 @@ app-product {
 
     & .product-price {
         align-self: center;
-    }
-}
-
-app-product-detail {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    bottom: 0;
-    background-color: #FFF;
-    max-width: 256px;
-    display: grid;
-    grid-template-rows: min-content;
-    box-shadow: 0px 0 4px 0px #CCC;
-    transform: translateX(100%);
-    transition: transform .7s;
-
-    &.active {
-        transform: translateX(0);
     }
 }

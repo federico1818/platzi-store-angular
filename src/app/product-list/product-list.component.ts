@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { Product } from 'src/app/product'
 
 import { StoreService } from 'src/app/services/store.service'
-import { ProductService } from '../services/product.service'
+import { ProductService } from 'src/app/services/product.service'
+import { UiService } from 'src/app/services/ui.service'
 
 @Component({
     selector: 'app-product-list',
@@ -18,7 +19,8 @@ export class ProductListComponent implements OnInit {
 
     constructor(
         private storeService: StoreService,
-        private productService: ProductService
+        private productService: ProductService,
+        private uiService: UiService
     ) {}
 
     public ngOnInit(): void {
@@ -30,7 +32,7 @@ export class ProductListComponent implements OnInit {
     }
 
     public showProductDetailModal(): void {
-        this.productDetailActive = true
+        this.uiService.showProductDetail(this.products[0])
     }
 
     // public addProductToShoppingCart(product: Product): void {

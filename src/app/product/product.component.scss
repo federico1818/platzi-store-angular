@@ -8,7 +8,7 @@ img {
 button {
     border: 0;
     background-color: transparent;
-    color: hsl(240deg, 2%, 70%);
+    color: var(--text-color-secondary);
     padding: 0;
 
     & .material-symbols-outlined {

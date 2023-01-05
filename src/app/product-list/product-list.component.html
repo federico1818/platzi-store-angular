@@ -9,4 +9,4 @@
 <div class="product-list">
     <app-product *ngFor="let product of products" [product]="product" (addedProduct)="showProductDetailModal()"></app-product>
 </div>
-<app-product-detail [class.active]="productDetailActive" (closed)="onProductDetailClosed()"></app-product-detail>
+<app-product-detail (closed)="onProductDetailClosed()"></app-product-detail>
