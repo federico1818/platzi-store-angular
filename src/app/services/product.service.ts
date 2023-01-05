@@ -16,4 +16,8 @@ export class ProductService {
     public all(): Observable<Product[]> {
         return this.http.get<Product[]>('https://young-sands-07814.herokuapp.com/api/products')
     }
+
+    public get(id: string): Observable<Product> {
+        return this.http.get<Product>(`https://young-sands-07814.herokuapp.com/api/products/${ id }`)
+    }
 }

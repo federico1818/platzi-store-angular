@@ -31,17 +31,8 @@ export class ProductListComponent implements OnInit {
         })
     }
 
-    public showProductDetailModal(): void {
-        this.uiService.showProductDetail(this.products[0])
-    }
-
-    // public addProductToShoppingCart(product: Product): void {
-    //     this.storeService.addProductToShoppingCart(product)
-    //     this.shoppingCartTotal = this.storeService.total
-    // }
-
-    public onProductDetailClosed(): void {
-        this.productDetailActive = false
+    public showProductDetailModal(product: Product): void {
+        this.uiService.showProductDetail(product)
     }
 
 }

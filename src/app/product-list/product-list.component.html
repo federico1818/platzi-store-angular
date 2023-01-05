@@ -7,6 +7,6 @@
     </div>
 </div>
 <div class="product-list">
-    <app-product *ngFor="let product of products" [product]="product" (addedProduct)="showProductDetailModal()"></app-product>
+    <app-product *ngFor="let product of products" [product]="product" (addedProduct)="showProductDetailModal($event)"></app-product>
 </div>
-<app-product-detail (closed)="onProductDetailClosed()"></app-product-detail>
+<app-product-detail></app-product-detail>
