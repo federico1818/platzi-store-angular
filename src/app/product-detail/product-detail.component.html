@@ -6,7 +6,17 @@
             </button>
         </div>
         <div class="product-detail-body">
-            <img [src]="product.images[0]" alt="{{ product.title }}">
+            <swiper
+                [slidesPerView]="1"
+                [spaceBetween]="50"
+                [navigation]="true"
+                [pagination]="{ clickable: true }"
+                [scrollbar]="{ draggable: true }"
+            >
+                <ng-template swiperSlide *ngFor="let image of product.images">
+                    <img [src]="image" [alt]="product.title">
+                </ng-template>
+            </swiper>
             <div class="product-title">{{ product.title }}</div>
             <div class="product-price">{{ product.price | currency: '$' }}</div>
             <div class="product-description">{{ product.description }}</div>
