@@ -4,6 +4,7 @@ import { Product } from 'src/app/product'
 import { StoreService } from 'src/app/services/store.service'
 import { ProductService } from 'src/app/services/product.service'
 import { UiService } from 'src/app/services/ui.service'
+import { ProductDTO } from '../product-dto'
 
 @Component({
     selector: 'app-product-list',
@@ -33,6 +34,19 @@ export class ProductListComponent implements OnInit {
 
     public showProductDetailModal(product: Product): void {
         this.uiService.showProductDetail(product)
+    }
+
+    public create(): void {
+        const product: ProductDTO = {
+            title: 'New product',
+            description: 'New description',
+            images: [''],
+            price: 100,
+            categoryId: 2
+        }
+        this.productService.create(product).subscribe(res => {
+            console.log(res)
+        })
     }
 
 }
