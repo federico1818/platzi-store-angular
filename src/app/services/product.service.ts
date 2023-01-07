@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
 import { Product } from 'src/app/product'
-import { ProductDTO } from 'src/app/product-dto'
+import { ProductCreateDTO } from 'src/app/product-create-dto'
+import { ProductUpdateDTO } from 'src/app/product-update-dto'
 
 @Injectable({
     providedIn: 'root'
@@ -23,7 +25,15 @@ export class ProductService {
         return this.http.get<Product>(`${ this.url }/${ id }`)
     }
 
-    public create(product: ProductDTO): Observable<Product> {
+    public create(product: ProductCreateDTO): Observable<Product> {
         return this.http.post<Product>(this.url, product)
+    }
+
+    public update(id: string, product: ProductUpdateDTO): Observable<Product> {
+        return this.http.put<Product>(`${ this.url }/${ id }`, product).pipe(
+            map((product: Product) => {
+                return product
+            })
+        )
     }
 }

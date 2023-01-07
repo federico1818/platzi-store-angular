@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 import { Product } from 'src/app/product'
 import { UiService } from 'src/app/services/ui.service'
 import { ProductService } from 'src/app/services/product.service'
+import { ProductUpdateDTO } from 'src/app/product-update-dto'
 
 @Component({
     selector: 'app-product-detail',
@@ -22,6 +23,15 @@ export class ProductDetailComponent implements OnInit {
         this.uiService.onShowProductDetail$.subscribe((product: Product) => {
             this.show()
             this.getProduct(product)
+        })
+    }
+
+    public update(): void {
+        const changes: ProductUpdateDTO = {
+            title: 'New title'
+        }
+        this.productService.update(this.product.id, changes).subscribe((product: Product) => {
+            this.product = product
         })
     }
 
