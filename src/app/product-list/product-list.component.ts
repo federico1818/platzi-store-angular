@@ -40,12 +40,12 @@ export class ProductListComponent implements OnInit {
         const product: ProductDTO = {
             title: 'New product',
             description: 'New description',
-            images: [''],
+            images: [`https://placeimg.com/640/480/any?random=${ Math.random() }`],
             price: 100,
             categoryId: 2
         }
-        this.productService.create(product).subscribe(res => {
-            console.log(res)
+        this.productService.create(product).subscribe((product: Product) => {
+            this.products.unshift(product)
         })
     }
 
