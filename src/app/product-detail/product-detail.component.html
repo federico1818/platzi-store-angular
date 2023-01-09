@@ -1,11 +1,14 @@
 <div class="overflow" [class.active]="active" *ngIf="product">
     <div class="product-detail-content">
         <div class="product-detail-header">
-            <button (click)="close()">
+            <button class="button-back" (click)="close()">
                 <span class="material-symbols-outlined">arrow_back</span>
             </button>
             <button (click)="update()">
                 <span class="material-symbols-outlined">edit</span>
+            </button>
+            <button (click)="delete()">
+                <span class="material-symbols-outlined">delete</span>
             </button>
         </div>
         <div class="product-detail-body">

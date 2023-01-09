@@ -46,9 +46,13 @@ img {
 }
 
 .product-detail-header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 32px 32px;
     padding: 16px;
+
+    & .button-back {
+        justify-self: start;
+    }
 
     & .material-symbols-outlined {
         font-weight: bold;

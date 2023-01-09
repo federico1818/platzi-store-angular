@@ -35,6 +35,12 @@ export class ProductDetailComponent implements OnInit {
         })
     }
 
+    public delete(): void {
+        this.productService.delete(this.product.id).subscribe((res: any) => {
+            this.close()
+        })
+    }
+
     public close(): void {
         this.active = false
     }

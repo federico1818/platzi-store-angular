@@ -36,4 +36,8 @@ export class ProductService {
             })
         )
     }
+
+    public delete(id: string): Observable<any> {
+        return this.http.delete<any>(`${ this.url }/${ id }`)
+    }
 }
