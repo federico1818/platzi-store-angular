@@ -27,9 +27,7 @@ export class ProductListComponent implements OnInit {
     public ngOnInit(): void {
         this.shoppingCart = this.storeService.shoppingCart
         this.shoppingCartTotal = this.storeService.total
-        this.productService.all().subscribe((products: Product[]) => {
-            this.products = products
-        })
+        this.getProducts()
     }
 
     public showProductDetailModal(product: Product): void {
@@ -46,6 +44,12 @@ export class ProductListComponent implements OnInit {
         }
         this.productService.create(product).subscribe((product: Product) => {
             this.products.unshift(product)
+        })
+    }
+
+    private getProducts(): void {
+        this.productService.paginate(0, 10).subscribe((products: Product[]) => {
+            this.products = products
         })
     }
 

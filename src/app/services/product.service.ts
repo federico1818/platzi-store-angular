@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
@@ -39,5 +39,15 @@ export class ProductService {
 
     public delete(id: string): Observable<any> {
         return this.http.delete<any>(`${ this.url }/${ id }`)
+    }
+
+    public paginate(offset: number, limit: number): Observable<Product[]> {
+        const params = new HttpParams()
+                            .append('limit', limit)
+                            .append('offset', offset)
+
+        return this.http.get<Product[]>(this.url, {
+            params: params
+        })
     }
 }
