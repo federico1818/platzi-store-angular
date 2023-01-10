@@ -1,7 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
+import { Observable, throwError } from 'rxjs'
+import { catchError, map } from 'rxjs/operators'
 import { Product } from 'src/app/product'
 import { ProductCreateDTO } from 'src/app/product-create-dto'
 import { ProductUpdateDTO } from 'src/app/product-update-dto'
@@ -22,7 +22,13 @@ export class ProductService {
     }
 
     public get(id: string): Observable<Product> {
-        return this.http.get<Product>(`${ this.url }/${ id }`)
+        return this.http
+                    .get<Product>(`${ this.url }/${ id }`)
+                    .pipe(
+                        catchError((error: HttpErrorResponse) => {
+                            return throwError(() => error)
+                        })
+                    )
     }
 
     public create(product: ProductCreateDTO): Observable<Product> {
