@@ -50,7 +50,7 @@ export class ProductDetailComponent implements OnInit {
     }
 
     private getProduct(product: Product) {
-        this.productService.get('12121').subscribe((product: Product) => {
+        this.productService.get(product.id).subscribe((product: Product) => {
             this.product = product
         })
     }
