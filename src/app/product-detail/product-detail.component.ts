@@ -3,6 +3,7 @@ import { Product } from 'src/app/product'
 import { UiService } from 'src/app/services/ui.service'
 import { ProductService } from 'src/app/services/product.service'
 import { ProductUpdateDTO } from 'src/app/product-update-dto'
+import { switchMap } from 'rxjs'
 
 @Component({
     selector: 'app-product-detail',
@@ -38,6 +39,15 @@ export class ProductDetailComponent implements OnInit {
     public delete(): void {
         this.productService.delete(this.product.id).subscribe((res: any) => {
             this.close()
+        })
+    }
+
+    public readAndUpdate(): void {
+        this.productService.get(this.product.id)
+        .pipe(
+            switchMap(product => this.productService.update(product.id, { title: 'Update Switch' }))
+        ).subscribe(data => {
+            console.log(data)
         })
     }
 
