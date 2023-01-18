@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable, throwError } from 'rxjs'
-import { catchError, map } from 'rxjs/operators'
+import { catchError, map, switchMap } from 'rxjs/operators'
 import { Product } from 'src/app/product'
 import { ProductCreateDTO } from 'src/app/product-create-dto'
 import { ProductUpdateDTO } from 'src/app/product-update-dto'
@@ -45,6 +45,12 @@ export class ProductService {
 
     public delete(id: string): Observable<any> {
         return this.http.delete<any>(`${ this.url }/${ id }`)
+    }
+
+    public readAndUpdate(id: string, product: ProductUpdateDTO): Observable<Product> {
+        return this.get(id).pipe(
+            switchMap((p: Product)=> this.update(p.id, product))
+        )
     }
 
     public paginate(offset: number, limit: number): Observable<Product[]> {

@@ -43,12 +43,11 @@ export class ProductDetailComponent implements OnInit {
     }
 
     public readAndUpdate(): void {
-        this.productService.get(this.product.id)
-        .pipe(
-            switchMap(product => this.productService.update(product.id, { title: 'Update Switch' }))
-        ).subscribe(data => {
-            console.log(data)
-        })
+        this.productService
+            .readAndUpdate(this.product.id, { title: 'Update Switch' })
+            .subscribe((product: Product) => {
+                console.log(product)
+            })
     }
 
     public close(): void {
