@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { StoreService } from 'src/app/services/store.service'
 import { Product } from 'src/app/product'
-import { UserService } from 'src/app/services/user.service'
-import { User } from 'src/app/user'
+import { AuthService } from 'src/app/services/auth.service'
+import { Token } from 'src/app/token'
 
 @Component({
     selector: 'app-header',
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
     constructor(
         private storeService: StoreService,
-        private userService: UserService
+        private authService: AuthService
     ) {}
 
     public ngOnInit(): void {
@@ -25,8 +25,8 @@ export class HeaderComponent implements OnInit {
     }
 
     public login(): void {
-        this.userService.all().subscribe((users: User[]) => {
-            console.log(users)
+        this.authService.loginRandomUser().subscribe((token: Token) => {
+            console.log(token)
         })
     }
 }
