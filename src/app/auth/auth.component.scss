@@ -1,0 +1,12 @@
+.user {
+    display: grid;
+    justify-items: center;
+
+    & .material-symbols-outlined {
+        font-size: 32px;
+    }
+}
+
+.user-name {
+    font-size: 13px;
+}

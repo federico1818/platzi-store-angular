@@ -1,0 +1,5 @@
+<button *ngIf="!isLoggedIn" class="button-primary sm" (click)="login()">Login</button>
+<div class="user" *ngIf="isLoggedIn">
+    <div class="material-symbols-outlined">account_circle</div>
+    <div class="user-name">{{ user.name }}</div>
+</div>

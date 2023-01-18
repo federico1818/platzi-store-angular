@@ -2,14 +2,16 @@ header {
     padding: 24px 24px 0;
     display: flex;
     justify-content: space-between;
-
-    & .material-symbols-outlined {
-        font-size: 32px;
-    }
+    align-items: end;
 }
 
 .shopping-cart {
     position: relative;
+    height: 32px;
+
+    & .material-symbols-outlined {
+        font-size: 32px;
+    }
 }
 
 .shopping-cart-length {

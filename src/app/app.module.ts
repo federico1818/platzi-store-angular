@@ -14,7 +14,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { HeaderComponent } from './header/header.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component'
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { AuthComponent } from './auth/auth.component'
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
         ReversePipe,
         HighlightDirective,
         HeaderComponent,
-        ProductDetailComponent
+        ProductDetailComponent,
+        AuthComponent
     ],
     imports: [
         BrowserModule,
