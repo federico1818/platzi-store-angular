@@ -5,13 +5,14 @@ import { catchError, map, switchMap } from 'rxjs/operators'
 import { Product } from 'src/app/product'
 import { ProductCreateDTO } from 'src/app/product-create-dto'
 import { ProductUpdateDTO } from 'src/app/product-update-dto'
+import { environment } from 'src/environments/environment'
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class ProductService {
-    private url: string = 'https://young-sands-07814.herokuapp.com/api/products'
+    private url: string = `${ environment.api.url }/products`
 
     constructor(
         private http: HttpClient
