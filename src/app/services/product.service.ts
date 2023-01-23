@@ -5,6 +5,7 @@ import { catchError, map, switchMap } from 'rxjs/operators'
 import { Product } from 'src/app/product'
 import { ProductCreateDTO } from 'src/app/product-create-dto'
 import { ProductUpdateDTO } from 'src/app/product-update-dto'
+import { checkTime } from 'src/app/interceptors/time.interceptor'
 import { environment } from 'src/environments/environment'
 
 @Injectable({
@@ -24,7 +25,9 @@ export class ProductService {
 
     public get(id: string): Observable<Product> {
         return this.http
-                    .get<Product>(`${ this.url }/${ id }`)
+                    .get<Product>(`${ this.url }/${ id }`, {
+                        context: checkTime()
+                    })
                     .pipe(
                         catchError((error: HttpErrorResponse) => {
                             return throwError(() => error)
