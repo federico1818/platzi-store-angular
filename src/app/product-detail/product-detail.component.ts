@@ -3,7 +3,7 @@ import { Product } from 'src/app/product'
 import { UiService } from 'src/app/services/ui.service'
 import { ProductService } from 'src/app/services/product.service'
 import { ProductUpdateDTO } from 'src/app/product-update-dto'
-import { switchMap } from 'rxjs'
+import { FilesService } from 'src/app/services/files.service'
 
 @Component({
     selector: 'app-product-detail',
@@ -13,14 +13,17 @@ import { switchMap } from 'rxjs'
 
 export class ProductDetailComponent implements OnInit {
     public active: boolean = false
+    public downloaded: boolean = false
     public product!: Product
 
     constructor(
         private uiService: UiService,
-        private productService: ProductService
+        private productService: ProductService,
+        private _filesService: FilesService
     ) {}
 
     public ngOnInit(): void {
+        this.downloaded = false
         this.uiService.onShowProductDetail$.subscribe((product: Product) => {
             this.show()
             this.getProduct(product)
@@ -52,6 +55,16 @@ export class ProductDetailComponent implements OnInit {
 
     public close(): void {
         this.active = false
+    }
+
+    public downloadImage(): void {
+        this._filesService.downloadFile(
+            'https://young-sands-07814.herokuapp.com/api/files/dummy.pdf',
+            this.product.title,
+            'application/pdf')
+        .subscribe((downloaded: boolean) => {
+            this.downloaded = downloaded
+        })
     }
 
     private show(): void {

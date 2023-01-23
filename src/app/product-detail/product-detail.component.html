@@ -28,6 +28,10 @@
             </swiper>
             <div class="product-title">{{ product.title }}</div>
             <div class="product-price">{{ product.price | currency: '$' }}</div>
+            <button class="button-icon button-download" (click)="downloadImage()">
+                <span class="material-symbols-outlined" *ngIf="!downloaded">download</span>
+                <span class="material-symbols-outlined" *ngIf="downloaded">download_done</span>
+            </button>
             <div class="product-description">{{ product.description }}</div>
             <button class="button-primary">Comprar</button>
         </div>
