@@ -5,16 +5,31 @@
 }
 
 .user-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.user-email {
     font-size: 12px;
+    width: 100%;
+    text-align: center;
+    margin: 8px 0 16px;
+    padding: 0 0 16px;
+    border-bottom: 1px solid var(--hr-border-color);
 }
 
 .user-box {
     display: none;
-    width: 256px;
-    padding: 24px 16px;
+    width: 192px;
+    padding: 16px 16px;
     border-radius: 8px;
     position: absolute;
     background-color: #FFF;
+    justify-items: center;
+
+    & .material-symbols-outlined {
+        font-size: 48px;
+    }
 }
 
 .user-box.active {

@@ -10,6 +10,7 @@ import { User } from 'src/app/user'
 
 export class AuthComponent implements OnInit {
     public isLoggedIn: boolean = false
+    public active: boolean = false
     public user!: User
 
     constructor(
@@ -25,6 +26,10 @@ export class AuthComponent implements OnInit {
             this.isLoggedIn = true
             this.user = user
         })
+    }
+
+    public toggleUserBox(): void {
+        this.active = !this.active
     }
 
     public logout(): void {

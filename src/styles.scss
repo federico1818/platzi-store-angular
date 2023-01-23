@@ -3,6 +3,7 @@
 :root {
     --text-color-secondary: hsl(240deg, 2%, 70%);
     --button-bg-primary: hsl(240deg, 2%, 70%);
+    --hr-border-color: hsl(240deg, 2%, 80%);
 }
 
 body {
@@ -25,15 +26,19 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 40px;
+    font-size: 16px;
+    width: 128px;
+    border-radius: 4px;
 }
 
 .button-primary {
     background-color: var(--button-bg-primary);
     color: #FFF;
-    width: 128px;
-    height: 40px;
-    font-size: 16px;
-    border-radius: 4px;
+}
+
+.button-outline {
+    border: 1px solid var(--button-bg-primary);
 }
 
 .button-primary.sm {
