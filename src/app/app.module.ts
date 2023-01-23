@@ -17,6 +17,7 @@ import { HeaderComponent } from './header/header.component'
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AuthComponent } from './auth/auth.component'
 import { TimeInterceptor } from './interceptors/time.interceptor'
+import { TokenInterceptor } from './interceptors/token.interceptor'
 
 @NgModule({
     declarations: [
@@ -44,6 +45,11 @@ import { TimeInterceptor } from './interceptors/time.interceptor'
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TimeInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
             multi: true
         }
     ],
