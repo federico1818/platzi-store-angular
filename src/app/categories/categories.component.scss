@@ -8,9 +8,17 @@ ul {
     flex-direction: row;
     font-size: 24px;
     font-weight: 700;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 li {
     padding: 8px;
+}
+
+li:first-child {
+    padding-left: 0;
+}
+
+li:last-child {
+    padding-right: 0;
 }

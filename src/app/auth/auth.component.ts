@@ -26,4 +26,8 @@ export class AuthComponent implements OnInit {
             this.user = user
         })
     }
+
+    public logout(): void {
+
+    }
 }

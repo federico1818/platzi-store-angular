@@ -1,12 +1,22 @@
 .user {
-    display: grid;
-    justify-items: center;
-
     & .material-symbols-outlined {
-        font-size: 32px;
+        font-size: 40px;
     }
 }
 
 .user-name {
-    font-size: 13px;
+    font-size: 12px;
+}
+
+.user-box {
+    display: none;
+    width: 256px;
+    padding: 24px 16px;
+    border-radius: 8px;
+    position: absolute;
+    background-color: #FFF;
+}
+
+.user-box.active {
+    display: grid;
 }
