@@ -1,8 +1,8 @@
-<button *ngIf="!isLoggedIn" class="button-primary sm" (click)="login()">Login</button>
-<div class="user" *ngIf="isLoggedIn" (click)="toggleUserBox()">
+<button *ngIf="!user" class="button-primary sm" (click)="login()">Login</button>
+<div class="user" *ngIf="user" (click)="toggleUserBox()">
     <div class="material-symbols-outlined">account_circle</div>
 </div>
-<div class="user-box" *ngIf="isLoggedIn" [class.active]="active">
+<div class="user-box" *ngIf="user" [class.active]="active">
     <div class="material-symbols-outlined">account_circle</div>
     <div class="user-name">{{ user.name }}</div>
     <div class="user-email">{{ user.email }}</div>

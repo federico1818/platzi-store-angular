@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { map, Observable, switchMap } from 'rxjs'
+import { Observable, Subject, switchMap } from 'rxjs'
 
 import { environment } from 'src/environments/environment'
 import { UserService } from 'src/app/services/user.service'
@@ -13,8 +13,8 @@ import { Token } from 'src/app/token'
 
 export class AuthService {
     private _url: string = `${ environment.api.url }/auth`
-    private _token!: Token
-    private _user!: User
+    private _token: Token | null = null
+    private _user: User | null = null
 
     constructor(
         private _http: HttpClient,
@@ -28,20 +28,7 @@ export class AuthService {
                 const random = Math.floor(Math.random() * users.length)
                 this._user = users[random]
                 return this.login(this._user)
-            })
-        )
-    }
-
-    public isLoggedIn(): boolean {
-        return !!this._token
-    }
-
-    public get user(): User {
-        return this._user
-    }
-
-    private login(user: User): Observable<User> {
-        return this._http.post<Token>(`${ this._url }/login`, user).pipe(
+            }),
             switchMap((token: Token)=> {
                 this._token = token
                 return this.getProfile()
@@ -49,9 +36,27 @@ export class AuthService {
         )
     }
 
+    public logout(): boolean {
+        this._token = null
+        this._user = null
+        return true
+    }
+
+    public isLoggedIn(): boolean {
+        return !!this._token
+    }
+
+    public get user(): User {
+        return this._user!
+    }
+
+    private login(user: User): Observable<Token> {
+        return this._http.post<Token>(`${ this._url }/login`, user)
+    }
+
     private getProfile(): Observable<User> {
         const headers = new HttpHeaders()
-                            .set('Authorization', `Bearer ${ this._token.access_token }`)
+                            .set('Authorization', `Bearer ${ this._token?.access_token }`)
 
         return this._http.get<User>(`${ this._url }/profile`, {
             headers: headers

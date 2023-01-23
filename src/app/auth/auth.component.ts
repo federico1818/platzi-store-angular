@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { AuthService } from 'src/app/services/auth.service'
 import { User } from 'src/app/user'
 
@@ -8,22 +8,16 @@ import { User } from 'src/app/user'
     styleUrls: ['./auth.component.scss']
 })
 
-export class AuthComponent implements OnInit {
-    public isLoggedIn: boolean = false
+export class AuthComponent {
     public active: boolean = false
-    public user!: User
+    public user: User | null = null
 
     constructor(
         private _authService: AuthService
     ) {}
 
-    public ngOnInit(): void {
-        this.isLoggedIn = this._authService.isLoggedIn()
-    }
-
     public login(): void {
         this._authService.loginRandomUser().subscribe((user: User) => {
-            this.isLoggedIn = true
             this.user = user
         })
     }
@@ -33,6 +27,8 @@ export class AuthComponent implements OnInit {
     }
 
     public logout(): void {
-
+        this._authService.logout()
+        this.active = false
+        this.user = null
     }
 }
