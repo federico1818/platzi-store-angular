@@ -41,6 +41,19 @@ button {
     border: 1px solid var(--button-bg-primary);
 }
 
+.button-icon {
+    border: 0;
+    background-color: transparent;
+    color: var(--text-color-secondary);
+    padding: 0;
+    height: initial;
+    width: initial;
+
+    & .material-symbols-outlined {
+        font-weight: bold;
+    }
+}
+
 .button-primary.sm {
     width: 80px;
     font-size: 14px;

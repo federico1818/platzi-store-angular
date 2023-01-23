@@ -5,17 +5,6 @@ img {
     border-radius: 4px;
 }
 
-button {
-    border: 0;
-    background-color: transparent;
-    color: var(--text-color-secondary);
-    padding: 0;
-
-    & .material-symbols-outlined {
-        font-weight: bold;
-    }
-}
-
 .product-title {
     align-self: center;
     color: #bfbebc;
