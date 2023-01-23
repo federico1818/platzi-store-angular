@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { map, Observable, switchMap } from 'rxjs'
 
@@ -17,7 +17,7 @@ export class AuthService {
     private _user!: User
 
     constructor(
-        private http: HttpClient,
+        private _http: HttpClient,
         private userService: UserService
     ) {}
 
@@ -41,11 +41,20 @@ export class AuthService {
     }
 
     private login(user: User): Observable<User> {
-        return this.http.post<Token>(`${ this._url }/login`, user).pipe(
-            map((token: Token) => {
+        return this._http.post<Token>(`${ this._url }/login`, user).pipe(
+            switchMap((token: Token)=> {
                 this._token = token
-                return user
+                return this.getProfile()
             })
         )
+    }
+
+    private getProfile(): Observable<User> {
+        const headers = new HttpHeaders()
+                            .set('Authorization', `Bearer ${ this._token.access_token }`)
+
+        return this._http.get<User>(`${ this._url }/profile`, {
+            headers: headers
+        })
     }
 }
