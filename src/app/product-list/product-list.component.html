@@ -1,4 +1,5 @@
 <button (click)="create()">Create</button>
+<input type="file" (change)="onChange($event)">
 <div class="shopping-cart-info">
     <div class="shopping-cart-length">
         {{ shoppingCart.length }} products

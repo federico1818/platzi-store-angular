@@ -4,6 +4,7 @@ import { Product } from 'src/app/product'
 import { StoreService } from 'src/app/services/store.service'
 import { ProductService } from 'src/app/services/product.service'
 import { UiService } from 'src/app/services/ui.service'
+import { FilesService } from 'src/app/services/files.service'
 import { ProductCreateDTO } from 'src/app/product-create-dto'
 
 @Component({
@@ -21,7 +22,8 @@ export class ProductListComponent implements OnInit {
     constructor(
         private storeService: StoreService,
         private productService: ProductService,
-        private uiService: UiService
+        private uiService: UiService,
+        private _filesService: FilesService
     ) {}
 
     public ngOnInit(): void {
@@ -44,6 +46,15 @@ export class ProductListComponent implements OnInit {
         }
         this.productService.create(product).subscribe((product: Product) => {
             this.products.unshift(product)
+        })
+    }
+
+    public onChange(event: Event): void {
+        const element: HTMLInputElement = event.target as HTMLInputElement
+        const file = element.files?.item(0) as Blob
+        if(!file) return
+        this._filesService.uploadFile(file).subscribe(res => {
+            console.log(res)
         })
     }
 
