@@ -16,15 +16,15 @@ export class ProductService {
     private url: string = `${ environment.api.url }/products`
 
     constructor(
-        private http: HttpClient
+        private _http: HttpClient
     ) {}
 
     public all(): Observable<Product[]> {
-        return this.http.get<Product[]>(this.url)
+        return this._http.get<Product[]>(this.url)
     }
 
     public get(id: string): Observable<Product> {
-        return this.http
+        return this._http
                     .get<Product>(`${ this.url }/${ id }`, {
                         context: checkTime()
                     })
@@ -36,11 +36,11 @@ export class ProductService {
     }
 
     public create(product: ProductCreateDTO): Observable<Product> {
-        return this.http.post<Product>(this.url, product)
+        return this._http.post<Product>(this.url, product)
     }
 
     public update(id: string, product: ProductUpdateDTO): Observable<Product> {
-        return this.http.put<Product>(`${ this.url }/${ id }`, product).pipe(
+        return this._http.put<Product>(`${ this.url }/${ id }`, product).pipe(
             map((product: Product) => {
                 return product
             })
@@ -48,7 +48,7 @@ export class ProductService {
     }
 
     public delete(id: string): Observable<any> {
-        return this.http.delete<any>(`${ this.url }/${ id }`)
+        return this._http.delete<any>(`${ this.url }/${ id }`)
     }
 
     public readAndUpdate(id: string, product: ProductUpdateDTO): Observable<Product> {
@@ -62,7 +62,17 @@ export class ProductService {
                             .append('limit', limit)
                             .append('offset', offset)
 
-        return this.http.get<Product[]>(this.url, {
+        return this._http.get<Product[]>(this.url, {
+            params: params
+        })
+    }
+
+    public getByCategory(categoryId: number, offset: number, limit: number): Observable<Product[]> {
+        const params = new HttpParams()
+                            .append('limit', limit)
+                            .append('offset', offset)
+
+        return this._http.get<Product[]>(`${ environment.api.url }/categories/${ categoryId }/products`, {
             params: params
         })
     }

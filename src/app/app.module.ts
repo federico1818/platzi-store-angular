@@ -19,7 +19,8 @@ import { AuthComponent } from './auth/auth.component'
 import { TimeInterceptor } from './interceptors/time.interceptor'
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { HomeComponent } from './pages/home/home.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component'
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CategoryComponent } from './pages/category/category.component'
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component'
         ProductDetailComponent,
         AuthComponent,
         HomeComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        CategoryComponent
     ],
     imports: [
         BrowserModule,
