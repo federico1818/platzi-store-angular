@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, ParamMap } from '@angular/router'
-import { filter, map } from 'rxjs'
+import { filter, map, switchMap } from 'rxjs/operators'
 import { Product } from 'src/app/product'
 import { ProductService } from 'src/app/services/product.service'
 
@@ -27,11 +27,12 @@ export class CategoryComponent implements OnInit {
             }),
             map((paramMap: ParamMap) => {
                 return parseInt(paramMap.get('id')!)
+            }),
+            switchMap((id: number) => {
+                return this._productService.getByCategory(id, 0, 10)
             })
-        ).subscribe((id: number) => {
-            this._productService.getByCategory(id, 0, 10).subscribe((products: Product[]) => {
-                this.products = products
-            })
+        ).subscribe((products: Product[]) => {
+            this.products = products
         })
     }
 }
