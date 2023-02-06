@@ -17,7 +17,9 @@ import { HeaderComponent } from './header/header.component'
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AuthComponent } from './auth/auth.component'
 import { TimeInterceptor } from './interceptors/time.interceptor'
-import { TokenInterceptor } from './interceptors/token.interceptor'
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component'
 
 @NgModule({
     declarations: [
@@ -30,7 +32,9 @@ import { TokenInterceptor } from './interceptors/token.interceptor'
         HighlightDirective,
         HeaderComponent,
         ProductDetailComponent,
-        AuthComponent
+        AuthComponent,
+        HomeComponent,
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,

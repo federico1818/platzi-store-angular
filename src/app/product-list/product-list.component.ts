@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core'
-import { Product } from 'src/app/product'
+import { Component, Input, OnInit } from '@angular/core'
 
+import { Product } from 'src/app/product'
 import { StoreService } from 'src/app/services/store.service'
 import { ProductService } from 'src/app/services/product.service'
 import { UiService } from 'src/app/services/ui.service'
@@ -14,9 +14,10 @@ import { ProductCreateDTO } from 'src/app/product-create-dto'
 })
 
 export class ProductListComponent implements OnInit {
+    @Input() public products: Product[] = []
+
     public shoppingCart: Product[] = []
     public shoppingCartTotal: number = 0
-    public products: Product[] = []
     public productDetailActive: boolean = false
 
     constructor(
@@ -29,7 +30,6 @@ export class ProductListComponent implements OnInit {
     public ngOnInit(): void {
         this.shoppingCart = this.storeService.shoppingCart
         this.shoppingCartTotal = this.storeService.total
-        this.getProducts()
     }
 
     public showProductDetailModal(product: Product): void {
@@ -58,10 +58,6 @@ export class ProductListComponent implements OnInit {
         })
     }
 
-    private getProducts(): void {
-        this.productService.paginate(0, 10).subscribe((products: Product[]) => {
-            this.products = products
-        })
-    }
+
 
 }
