@@ -1,7 +1,8 @@
 <nav>
     <ul>
-        <li appHighlight>All</li>
-        <li>Clothes</li>
-        <li>Electronics</li>
+        <li routerLink="/">All</li>
+        <li *ngFor="let category of categories">
+            <a [routerLink]="['category', category.id]">{{ category.name }}</a>
+        </li>
     </ul>
 </nav>
