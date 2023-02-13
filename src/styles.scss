@@ -1,11 +1,7 @@
 @import 'swiper/scss';
 @import 'src/assets/scss/reset';
+@import 'src/assets/scss/theme/colors';
 
-:root {
-    --text-color-secondary: hsl(240deg, 2%, 70%);
-    --button-bg-primary: hsl(240deg, 2%, 70%);
-    --hr-border-color: hsl(240deg, 2%, 80%);
-}
 
 body {
     background-color: hsl(0, 0%, 94%);
@@ -71,4 +67,12 @@ app-product {
     & .product-price {
         align-self: center;
     }
+}
+
+app-not-found {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    grid-gap: 24px 0;
+    padding: 24px;
 }
