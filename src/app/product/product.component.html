@@ -1,6 +1,6 @@
 <img [src]="product.images[0]" alt="product.title">
 <div class="product-title" [title]="product.title | reverse">{{ product.title }}</div>
 <div class="product-price">{{ product.price | currency: '$' }}</div>
-<button class="button-icon" (click)="addProductToShoppingCart()">
-    <span class="material-symbols-outlined">add_shopping_cart</span>
-</button>
+<a class="button-icon" [routerLink]="['/products', product.id]">
+    <span class="material-symbols-outlined">info</span>
+</a>

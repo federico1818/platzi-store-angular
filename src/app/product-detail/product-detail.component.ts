@@ -1,9 +1,17 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
+import SwiperCore, { FreeMode, Navigation, Thumbs } from "swiper"
 import { Product } from 'src/app/product'
 import { UiService } from 'src/app/services/ui.service'
 import { ProductService } from 'src/app/services/product.service'
 import { ProductUpdateDTO } from 'src/app/product-update-dto'
 import { FilesService } from 'src/app/services/files.service'
+
+// install Swiper modules
+SwiperCore.use([
+    FreeMode,
+    Navigation,
+    Thumbs
+])
 
 @Component({
     selector: 'app-product-detail',
@@ -12,22 +20,17 @@ import { FilesService } from 'src/app/services/files.service'
 })
 
 export class ProductDetailComponent implements OnInit {
-    public active: boolean = false
+    @Input() public product!: Product
     public downloaded: boolean = false
-    public product!: Product
+    public thumbsSwiper: any
 
     constructor(
-        private uiService: UiService,
         private productService: ProductService,
         private _filesService: FilesService
     ) {}
 
     public ngOnInit(): void {
         this.downloaded = false
-        this.uiService.onShowProductDetail$.subscribe((product: Product) => {
-            this.show()
-            this.getProduct(product)
-        })
     }
 
     public update(): void {
@@ -41,7 +44,7 @@ export class ProductDetailComponent implements OnInit {
 
     public delete(): void {
         this.productService.delete(this.product.id).subscribe((res: any) => {
-            this.close()
+
         })
     }
 
@@ -53,10 +56,6 @@ export class ProductDetailComponent implements OnInit {
             })
     }
 
-    public close(): void {
-        this.active = false
-    }
-
     public downloadImage(): void {
         this._filesService.downloadFile(
             'https://young-sands-07814.herokuapp.com/api/files/dummy.pdf',
@@ -64,16 +63,6 @@ export class ProductDetailComponent implements OnInit {
             'application/pdf')
         .subscribe((downloaded: boolean) => {
             this.downloaded = downloaded
-        })
-    }
-
-    private show(): void {
-        this.active = true
-    }
-
-    private getProduct(product: Product) {
-        this.productService.get(product.id).subscribe((product: Product) => {
-            this.product = product
         })
     }
 }

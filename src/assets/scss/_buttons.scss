@@ -1,0 +1,38 @@
+button {
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.button-primary {
+    background-color: var(--button-bg-primary);
+    color: #FFF;
+    width: 128px;
+}
+
+.button-outline {
+    border: 1px solid var(--button-bg-primary);
+}
+
+.button-icon {
+    border: 0;
+    background-color: transparent;
+    color: var(--text-color-secondary);
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    width: 40px;
+}
+
+.button-primary.sm {
+    width: 80px;
+    font-size: 14px;
+    height: 32px;
+}

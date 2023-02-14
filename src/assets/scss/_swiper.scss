@@ -1,0 +1,28 @@
+.swiper-wrapper {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+
+    & img {
+        width: 100%;
+        max-width: 512px;
+    }
+}
+
+.swiper-thumbs {
+    & img {
+        max-width: 128px;
+    }
+
+    & .swiper-slide {
+        cursor: pointer;
+    }
+
+    & .swiper-wrapper {
+        margin: 16px 0 24px 0;
+    }
+}

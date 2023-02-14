@@ -1,53 +1,14 @@
 @import 'swiper/scss';
 @import 'src/assets/scss/reset';
+@import 'src/assets/scss/base';
 @import 'src/assets/scss/theme/colors';
+@import 'src/assets/scss/buttons';
+@import 'src/assets/scss/swiper';
 
 
 body {
     background-color: hsl(0, 0%, 94%);
     font-family: 'Quicksand', sans-serif;
-}
-
-button {
-    cursor: pointer;
-    border: 0;
-    background-color: transparent;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    font-size: 16px;
-    width: 128px;
-    border-radius: 4px;
-}
-
-.button-primary {
-    background-color: var(--button-bg-primary);
-    color: #FFF;
-}
-
-.button-outline {
-    border: 1px solid var(--button-bg-primary);
-}
-
-.button-icon {
-    border: 0;
-    background-color: transparent;
-    color: var(--text-color-secondary);
-    padding: 0;
-    height: initial;
-    width: initial;
-
-    & .material-symbols-outlined {
-        font-weight: bold;
-    }
-}
-
-.button-primary.sm {
-    width: 80px;
-    font-size: 14px;
-    height: 32px;
 }
 
 app-product {

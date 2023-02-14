@@ -20,7 +20,8 @@ import { TimeInterceptor } from './interceptors/time.interceptor'
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { CategoryComponent } from './pages/category/category.component'
+import { CategoryComponent } from './pages/category/category.component';
+import { ProductShowComponent } from './pages/product-show/product-show.component'
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { CategoryComponent } from './pages/category/category.component'
         AuthComponent,
         HomeComponent,
         NotFoundComponent,
-        CategoryComponent
+        CategoryComponent,
+        ProductShowComponent
     ],
     imports: [
         BrowserModule,

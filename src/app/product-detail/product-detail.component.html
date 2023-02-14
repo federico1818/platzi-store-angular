@@ -1,39 +1,41 @@
-<div class="overflow" [class.active]="active" *ngIf="product">
-    <div class="product-detail-content">
-        <div class="product-detail-header">
-            <button class="button-icon button-back" (click)="close()">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </button>
-            <button (click)="readAndUpdate()">
-                <span class="material-symbols-outlined">edit_note</span>
-            </button>
-            <button (click)="update()">
-                <span class="material-symbols-outlined">edit</span>
-            </button>
-            <button (click)="delete()">
-                <span class="material-symbols-outlined">delete</span>
-            </button>
-        </div>
-        <div class="product-detail-body">
-            <swiper
-                [slidesPerView]="1"
-                [spaceBetween]="50"
-                [navigation]="true"
-                [pagination]="{ clickable: true }"
-                [scrollbar]="{ draggable: true }"
-            >
-                <ng-template swiperSlide *ngFor="let image of product.images">
-                    <img [src]="image" [alt]="product.title">
-                </ng-template>
-            </swiper>
-            <div class="product-title">{{ product.title }}</div>
-            <div class="product-price">{{ product.price | currency: '$' }}</div>
-            <button class="button-icon button-download" (click)="downloadImage()">
-                <span class="material-symbols-outlined" *ngIf="!downloaded">download</span>
-                <span class="material-symbols-outlined" *ngIf="downloaded">download_done</span>
-            </button>
-            <div class="product-description">{{ product.description }}</div>
-            <button class="button-primary">Comprar</button>
-        </div>
+<div class="product-detail" *ngIf="product">
+    <div class="product-title">{{ product.title }}</div>
+    <swiper
+        [slidesPerView]="1"
+        [spaceBetween]="48"
+        [navigation]="true"
+        [thumbs]="{ swiper: thumbsSwiper }"
+    >
+        <ng-template swiperSlide *ngFor="let image of product.images">
+            <img [src]="image" [alt]="product.title">
+        </ng-template>
+    </swiper>
+    <swiper
+        (swiper)="thumbsSwiper = $event"
+        [slidesPerView]="3"
+        [spaceBetween]="24"
+        class="swiper-thumbs"
+    >
+        <ng-template swiperSlide *ngFor="let image of product.images">
+            <img [src]="image" [alt]="product.title">
+        </ng-template>
+    </swiper>
+    <div class="product-description">{{ product.description }}</div>
+    <div class="product-price">{{ product.price | currency: '$' }}</div>
+    <div class="button-group">
+        <button class="button-primary">Comprar</button>
+        <button class="button-icon" (click)="readAndUpdate()">
+            <span class="material-symbols-outlined">edit_note</span>
+        </button>
+        <button class="button-icon" (click)="update()">
+            <span class="material-symbols-outlined">edit</span>
+        </button>
+        <button class="button-icon" (click)="delete()">
+            <span class="material-symbols-outlined">delete</span>
+        </button>
+        <button class="button-icon" (click)="downloadImage()">
+            <span class="material-symbols-outlined" *ngIf="!downloaded">download</span>
+            <span class="material-symbols-outlined" *ngIf="downloaded">download_done</span>
+        </button>
     </div>
 </div>

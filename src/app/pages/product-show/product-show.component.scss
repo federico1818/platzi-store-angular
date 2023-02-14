@@ -1,0 +1,14 @@
+.overflow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    bottom: 0;
+    background-color: var(--overflow-bg-color);
+    padding: 16px;
+}
+
+.material-symbols-outlined {
+    font-size: 40px;
+    font-weight: bold;
+}
