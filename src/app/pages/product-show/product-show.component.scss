@@ -1,11 +1,6 @@
-.overflow {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    bottom: 0;
-    background-color: var(--overflow-bg-color);
-    padding: 16px;
+.product-show {
+    padding: 24px;
+    max-width: 512px;
 }
 
 .material-symbols-outlined {
