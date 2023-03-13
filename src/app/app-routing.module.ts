@@ -25,6 +25,12 @@ const routes: Routes = [
         component: CategoryComponent
     },
     {
+        path: 'admin',
+        loadChildren: () => import('src/app/cms/cms.module').then(module => {
+            return module.CmsModule
+        })
+    },
+    {
         path: '**',
         component: NotFoundComponent
     }
